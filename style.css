@@ -251,44 +251,22 @@ section {
     width: min(310px, 75vw);
     aspect-ratio: 1;
     border-radius: 50%;
-    border: 1px solid rgba(182, 154, 255, 0.35);
-    background:
-        radial-gradient(circle at 35% 30%,
-        rgba(182, 154, 255, 0.22),
-        rgba(139, 92, 246, 0.06) 45%,
-        transparent 70%);
+    overflow: hidden;
+    position: relative;
+    border: 3px solid rgba(182, 154, 255, 0.6);
+    background: #171225;
     box-shadow:
-        0 0 70px rgba(139, 92, 246, 0.12),
-        inset 0 0 50px rgba(139, 92, 246, 0.08);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+        0 0 70px rgba(139, 92, 246, 0.2),
+        inset 0 0 30px rgba(139, 92, 246, 0.1);
     animation: float 5s ease-in-out infinite;
 }
 
-.visual-circle::before,
-.visual-circle::after {
-    content: "";
-    position: absolute;
-    border: 1px solid rgba(182, 154, 255, 0.18);
-    border-radius: 50%;
-}
-
-.visual-circle::before {
-    width: 85%;
-    height: 85%;
-}
-
-.visual-circle::after {
-    width: 65%;
-    height: 65%;
-}
-
-.visual-circle span {
-    font-size: 6rem;
-    font-weight: 700;
-    color: var(--purple-light);
-    text-shadow: 0 0 35px rgba(139, 92, 246, 0.5);
+.visual-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 75%;
+    display: block;
 }
 
 .visual-card {
@@ -873,4 +851,35 @@ section {
         transform: none;
         transition: none;
     }
+}
+
+/* CONTENT STRATEGY SHOWCASE */
+
+.content-strategy {
+    position: relative;
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+.content-strategy .section-heading {
+    margin-bottom: 50px;
+}
+
+.content-strategy .skills-grid {
+    margin-bottom: 45px;
+}
+
+.content-strategy .skill-card {
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.content-strategy .skill-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(182, 154, 255, 0.5);
+}
+
+.content-strategy > .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
