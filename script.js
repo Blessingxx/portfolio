@@ -119,3 +119,49 @@ projectCards.forEach((card) => {
         card.classList.remove("is-hovered");
     });
 });
+
+// LIGHT AND DARK MODE
+
+const portfolioThemeToggle = document.getElementById("themeToggle");
+
+const savedPortfolioTheme = localStorage.getItem("portfolio-theme");
+
+// Restore the visitor's previous theme
+if (savedPortfolioTheme === "light") {
+    document.documentElement.setAttribute("data-theme", "light");
+}
+
+function updateThemeButton() {
+    const isLightMode =
+        document.documentElement.getAttribute("data-theme") === "light";
+
+    portfolioThemeToggle.textContent = isLightMode ? "☾" : "☀";
+
+    portfolioThemeToggle.setAttribute(
+        "aria-label",
+        isLightMode ? "Switch to dark mode" : "Switch to light mode"
+    );
+
+    portfolioThemeToggle.setAttribute(
+        "title",
+        isLightMode ? "Switch to dark mode" : "Switch to light mode"
+    );
+}
+
+updateThemeButton();
+
+// Switch themes when clicked
+portfolioThemeToggle.addEventListener("click", () => {
+    const isLightMode =
+        document.documentElement.getAttribute("data-theme") === "light";
+
+    if (isLightMode) {
+        document.documentElement.removeAttribute("data-theme");
+        localStorage.setItem("portfolio-theme", "dark");
+    } else {
+        document.documentElement.setAttribute("data-theme", "light");
+        localStorage.setItem("portfolio-theme", "light");
+    }
+
+    updateThemeButton();
+});
